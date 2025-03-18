@@ -1,26 +1,27 @@
 import java.util.*;
 
 class Solution {
+    static Set<Integer> set = new HashSet<>();
     static boolean[] visited = new boolean[7];
-    static Set<Integer> answer = new HashSet<>();
     static String numbers;
     
     public int solution(String numbers) {
         this.numbers = numbers;
-        
         for (int i = 0; i < numbers.length(); i++) {
-            back("", 0, i+1);
+            back("", 0, i + 1);
         }
         
-        return answer.size();
+        return set.size();
     }
     
     public static void back(String str, int depth, int goal) {
         if (depth == goal) {
             int tmp = Integer.parseInt(str);
-            if (!answer.contains(tmp) && isPrime(tmp)) {
-                answer.add(tmp);
+            
+            if (!set.contains(tmp) && isPrime(tmp)) {
+                set.add(tmp);
             }
+            
             return;
         }
         
@@ -36,13 +37,12 @@ class Solution {
         
     }
     
-    public static boolean isPrime(int number) {
-        if (number <= 1) return false;
+    public static boolean isPrime(int num) {
+        if (num <= 1) return false;
         
-        for (int i = 2; i * i <= number; i++) {
-            if (number % i == 0) return false;
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) return false;
         }
-        
         return true;
     }
 }
