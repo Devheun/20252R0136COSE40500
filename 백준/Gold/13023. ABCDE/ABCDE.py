@@ -7,7 +7,6 @@ friends = [[] for _ in range(N)]
 visited = [False] * N
 
 def dfs(person, cnt):
-    global visited
     if cnt == 4:
         print(1)
         exit()
